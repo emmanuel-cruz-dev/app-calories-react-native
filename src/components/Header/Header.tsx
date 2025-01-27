@@ -40,7 +40,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#808080",
   },
-  profileImage: {},
+  profileImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 24,
+  },
 });
 
 export default Header;
