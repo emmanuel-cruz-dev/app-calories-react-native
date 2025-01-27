@@ -8,14 +8,11 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const Routes = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+        // <Stack.Screen name="AddFood" component={AddFood} />
+      </Stack.Navigator>
     </NavigationContainer>
-
-      //<Stack.Navigator initialRouteName="Home">
-        // <Stack.Screen name="Home" component={Home} />
-        // <Stack.Screen name="About" component={AboutScreen} />
-      //</Stack.Navigator>
-
   );
 };
 

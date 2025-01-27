@@ -21,11 +21,25 @@ const Header = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {},
-  leftContainer: {},
-  rightContainer: {},
-  name: {},
-  subtitle: {},
+  container: {
+    flexDirection: "row",
+  },
+  leftContainer: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  rightContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+  },
+  name: {
+    fontSize: 14,
+    fontWeight: "bold",
+  },
+  subtitle: {
+    fontSize: 12,
+    color: "#808080",
+  },
   profileImage: {},
 });
 

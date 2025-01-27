@@ -5,13 +5,14 @@ import Header from "../../components/Header";
 
 const Home = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <Header />
-      <Text>Home</Text>
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {},
+});
 
 export default Home;
