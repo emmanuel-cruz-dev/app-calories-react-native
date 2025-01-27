@@ -12,7 +12,11 @@ const Home = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+    padding: 12,
+    backgroundColor: "#fff",
+  },
 });
 
 export default Home;
