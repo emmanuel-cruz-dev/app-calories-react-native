@@ -7,6 +7,9 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <Header />
+      <View>
+        <View style={styles.leftContainer}></View>
+      </View>
     </View>
   );
 };
