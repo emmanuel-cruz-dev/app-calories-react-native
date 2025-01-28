@@ -9,7 +9,7 @@ type AddFoodModalProps = {
 
 const AddFoodModal: FC<AddFoodModalProps> = ({ onClose, visible }) => {
   return (
-    <Modal visible={visible} onRequestClose={onClose}>
+    <Modal visible={visible} onRequestClose={onClose} transparent>
       <View style={styles.container}>
         <View style={styles.content}>
           <Button icon={<Icon name="close" size={24} />} onPress={onClose} />
