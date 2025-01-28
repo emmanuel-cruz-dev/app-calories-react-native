@@ -11,7 +11,7 @@ type FormItemProps = {
   text: string;
 };
 
-const staticInfo = ["KCAL", "Calories", "Carbohydrates", "Protein", "Fat"];
+const staticInfo = ["KCAL", "Name", "Portion"];
 
 const FormItem: FC<FormItemProps> = ({ text }) => {
   return (
@@ -47,14 +47,14 @@ const AddFoodModal: FC<AddFoodModalProps> = ({ onClose, visible }) => {
           {staticInfo.map((item, index) => (
             <FormItem text={item} key={index} />
           ))}
-          {/* <View style={styles.formItem}>
-            <View style={styles.inputContainer}>
-              <Input />
-            </View>
-            <View style={styles.legendContainer}>
-              <Text style={styles.legend}>KCAL</Text>
-            </View>
-          </View> */}
+          <View style={styles.buttonContainer}>
+            <Button
+              title="Add"
+              icon={<Icon name="add" size={24} color={"#fff"} />}
+              color={"#4ecb71"}
+              radius={"lg"}
+            />
+          </View>
         </View>
       </View>
     </Modal>
@@ -97,6 +97,9 @@ const styles = StyleSheet.create({
   },
   legend: {
     fontWeight: "500",
+  },
+  buttonContainer: {
+    alignItems: "flex-end",
   },
 });
 
