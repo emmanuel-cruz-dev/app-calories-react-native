@@ -1,7 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const MealItem = () => {
+import { Meal } from "../../types";
+
+const MealItem: FC<Meal> = ({ calories, name, portion }) => {
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}></View>
