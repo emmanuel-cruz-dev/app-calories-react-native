@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
   },
   arrowContainer: {
     marginLeft: -12,
+    justifyContent: "center",
   },
 });
 

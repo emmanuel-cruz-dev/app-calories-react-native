@@ -1,8 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import Header from "../../components/Header";
-import { Button, Icon } from "@rneui/themed";
-import { Input } from "@rneui/themed";
+import { Button, Icon, Input } from "@rneui/themed";
 
 const AddFood = () => {
   return (
@@ -10,7 +9,7 @@ const AddFood = () => {
       <Header />
       <View style={styles.addFoodContainer}>
         <View style={styles.legendContainer}>
-          <Text style={styles.addFoodLegend}>Add food</Text>
+          <Text style={styles.addFoodLegend}>Add Food</Text>
         </View>
         <View style={styles.addFoodButtonContainer}>
           <Button
