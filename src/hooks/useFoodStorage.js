@@ -1,8 +1,14 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+const MY_FOOD_KEY = "@MyFood:Key";
+
 const useFoodStorage = () => {
-  const handleSaveFood = (food) => {
-    AsyncStorage.setItem("food", JSON.stringify(food));
+  const handleSaveFood = async () => {
+    const currentSavedFood = await AsyncStorage.getItem(MY_FOOD_KEY);
+
+    if (currentSavedFood !== null) {
+      const currentSavedFoodParsed = JSON.parse(currentSavedFood);
+    }
   };
 
   const handleGetFood = () => {
