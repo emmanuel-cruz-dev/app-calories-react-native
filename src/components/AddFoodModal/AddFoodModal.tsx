@@ -1,5 +1,5 @@
 import { Button, Icon, Input } from "@rneui/themed";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Modal, View, Text, StyleSheet } from "react-native";
 
 type AddFoodModalProps = {
@@ -9,15 +9,14 @@ type AddFoodModalProps = {
 
 type FormItemProps = {
   text: string;
+  value: string;
 };
 
-const staticInfo = ["KCAL", "Name", "Portion"];
-
-const FormItem: FC<FormItemProps> = ({ text }) => {
+const FormItem: FC<FormItemProps> = ({ text, value }) => {
   return (
     <View style={styles.formItem}>
       <View style={styles.inputContainer}>
-        <Input />
+        <Input value={value} />
       </View>
       <View style={styles.legendContainer}>
         <Text style={styles.legend}>{text}</Text>
@@ -27,6 +26,16 @@ const FormItem: FC<FormItemProps> = ({ text }) => {
 };
 
 const AddFoodModal: FC<AddFoodModalProps> = ({ onClose, visible }) => {
+  const [calories, setCalories] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [portion, setPortion] = useState<string>("");
+
+  const staticInfo = [
+    { id: 1, text: "CAL", value: calories },
+    { id: 2, text: "Name", value: name },
+    { id: 3, text: "Portion", value: portion },
+  ];
+
   return (
     <Modal
       visible={visible}
@@ -44,8 +53,8 @@ const AddFoodModal: FC<AddFoodModalProps> = ({ onClose, visible }) => {
             />
           </View>
 
-          {staticInfo.map((item, index) => (
-            <FormItem text={item} key={index} />
+          {staticInfo.map((item) => (
+            <FormItem text={item.text} value={item.value} key={item.id} />
           ))}
           <View style={styles.buttonContainer}>
             <Button
