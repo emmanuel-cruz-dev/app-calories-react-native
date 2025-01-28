@@ -1,4 +1,4 @@
-import { Button, Icon } from "@rneui/themed";
+import { Button, Icon, Input } from "@rneui/themed";
 import React, { FC } from "react";
 import { Modal, View, Text, StyleSheet } from "react-native";
 
@@ -23,6 +23,14 @@ const AddFoodModal: FC<AddFoodModalProps> = ({ onClose, visible }) => {
               onPress={onClose}
               type="clear"
             />
+          </View>
+          <View style={styles.formItem}>
+            <View style={styles.inputContainer}>
+              <Input />
+            </View>
+            <View style={styles.legendContainer}>
+              <Text style={styles.legend}>KCAL</Text>
+            </View>
           </View>
         </View>
       </View>
@@ -54,6 +62,10 @@ const styles = StyleSheet.create({
   closeContainer: {
     alignItems: "flex-end",
   },
+  formItem: {},
+  inputContainer: {},
+  legendContainer: {},
+  legend: {},
 });
 
 export default AddFoodModal;
