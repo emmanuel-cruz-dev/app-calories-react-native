@@ -7,6 +7,25 @@ type AddFoodModalProps = {
   visible: boolean;
 };
 
+type FormItemProps = {
+  text: string;
+};
+
+const staticInfo = ["KCAL", "Calories", "Carbohydrates", "Protein", "Fat"];
+
+const FormItem: FC<FormItemProps> = ({ text }) => {
+  return (
+    <View style={styles.formItem}>
+      <View style={styles.inputContainer}>
+        <Input />
+      </View>
+      <View style={styles.legendContainer}>
+        <Text style={styles.legend}>{text}</Text>
+      </View>
+    </View>
+  );
+};
+
 const AddFoodModal: FC<AddFoodModalProps> = ({ onClose, visible }) => {
   return (
     <Modal
@@ -24,14 +43,18 @@ const AddFoodModal: FC<AddFoodModalProps> = ({ onClose, visible }) => {
               type="clear"
             />
           </View>
-          <View style={styles.formItem}>
+
+          {staticInfo.map((item, index) => (
+            <FormItem text={item} key={index} />
+          ))}
+          {/* <View style={styles.formItem}>
             <View style={styles.inputContainer}>
               <Input />
             </View>
             <View style={styles.legendContainer}>
               <Text style={styles.legend}>KCAL</Text>
             </View>
-          </View>
+          </View> */}
         </View>
       </View>
     </Modal>
@@ -62,10 +85,19 @@ const styles = StyleSheet.create({
   closeContainer: {
     alignItems: "flex-end",
   },
-  formItem: {},
-  inputContainer: {},
-  legendContainer: {},
-  legend: {},
+  formItem: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  inputContainer: {
+    flex: 2,
+  },
+  legendContainer: {
+    flex: 1,
+  },
+  legend: {
+    fontWeight: "500",
+  },
 });
 
 export default AddFoodModal;
