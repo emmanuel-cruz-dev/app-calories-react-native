@@ -58,7 +58,9 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 24,
   },
-  arrowContainer: {},
+  arrowContainer: {
+    marginLeft: -12,
+  },
 });
 
 export default Header;
