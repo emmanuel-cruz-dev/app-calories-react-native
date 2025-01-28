@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Alert } from "react-native";
 import Header from "../../components/Header";
 import { Button, Icon, Input } from "@rneui/themed";
 import AddFoodModal from "../../components/AddFoodModal";
@@ -7,7 +7,10 @@ import AddFoodModal from "../../components/AddFoodModal";
 const AddFood = () => {
   const [visible, setVisible] = useState<boolean>(false);
 
-  const handleModalClose = () => {
+  const handleModalClose = (shouldUpdate?: boolean) => {
+    if (shouldUpdate) {
+      Alert.alert("Food added successfully");
+    }
     setVisible(false);
   };
 
