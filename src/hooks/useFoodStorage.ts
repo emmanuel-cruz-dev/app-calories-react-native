@@ -19,8 +19,17 @@ const useFoodStorage = () => {
           MY_FOOD_KEY,
           JSON.stringify(currentSavedFoodParsed)
         );
+        return Promise.resolve();
       }
-    } catch (error) {}
+
+      await AsyncStorage.setItem(
+        MY_FOOD_KEY,
+        JSON.stringify([{ name, calories, portion }])
+      );
+      return Promise.resolve();
+    } catch (error) {
+      return Promise.reject(error);
+    }
   };
 
   const handleGetFood = () => {
