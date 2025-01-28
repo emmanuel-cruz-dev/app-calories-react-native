@@ -16,7 +16,7 @@ const MealItem: FC<Meal> = ({ calories, name, portion }) => {
           icon={<Icon name="add-circle-outline" size={24} />}
           type="clear"
         />
-        <Text style={styles.calories}>{calories}</Text>
+        <Text style={styles.calories}>{calories} cal</Text>
       </View>
     </View>
   );
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ade8af",
     borderRadius: 12,
     padding: 12,
-    marginVertical: 12,
+    marginBottom: 12,
   },
   leftContainer: {
     flex: 1,
@@ -39,9 +39,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-end",
   },
-  name: {},
-  portion: {},
-  calories: {},
+  name: {
+    fontSize: 18,
+    fontWeight: "500",
+  },
+  portion: {
+    fontSize: 14,
+    color: "#808080",
+    fontWeight: "500",
+  },
+  calories: {
+    fontSize: 18,
+  },
 });
 
 export default MealItem;
