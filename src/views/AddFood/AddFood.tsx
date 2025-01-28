@@ -4,20 +4,26 @@ import Header from "../../components/Header";
 import { Button, Icon, Input } from "@rneui/themed";
 import AddFoodModal from "../../components/AddFoodModal";
 import useFoodStorage from "../../hooks/useFoodStorage";
+import { Meal } from "../../types";
 
 const AddFood = () => {
   const [visible, setVisible] = useState<boolean>(false);
+  const [foods, setFoods] = useState<Meal[]>([]);
   const { onGetFood } = useFoodStorage();
+
+  const loadFoods = async () => {
+    try {
+      const foodsReponse = await onGetFood();
+      setFoods(foodsReponse);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleModalClose = async (shouldUpdate?: boolean) => {
     if (shouldUpdate) {
       Alert.alert("Food added successfully");
-      try {
-        const foodsReponse = await onGetFood();
-        console.log(foodsReponse);
-      } catch (error) {
-        console.error(error);
-      }
+      loadFoods();
     }
     setVisible(false);
   };
