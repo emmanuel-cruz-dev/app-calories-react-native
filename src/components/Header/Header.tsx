@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   rightContainer: {
-    // flex: 1,
     justifyContent: "flex-end",
   },
   name: {
@@ -54,8 +53,8 @@ const styles = StyleSheet.create({
     color: "#808080",
   },
   profileImage: {
-    width: 40,
-    height: 40,
+    width: 52,
+    height: 52,
     borderRadius: 24,
   },
   arrowContainer: {
