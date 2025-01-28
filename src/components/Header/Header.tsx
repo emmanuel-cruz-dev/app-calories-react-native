@@ -1,5 +1,7 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { View, Text, StyleSheet, Image } from "react-native";
+import { Button, Icon } from "@rneui/base";
 
 const staticInfo = {
   name: "Emmanuel Cruz",
@@ -7,8 +9,19 @@ const staticInfo = {
 };
 
 const Header = () => {
+  const { canGoBack, goBack } = useNavigation();
+
   return (
     <View style={styles.container}>
+      {canGoBack() ? (
+        <View style={styles.arrowContainer}>
+          <Button
+            icon={<Icon name="arrow-back" size={24} />}
+            onPress={goBack}
+            type="clear"
+          />
+        </View>
+      ) : undefined}
       <View style={styles.leftContainer}>
         <Text style={styles.name}>Hello {staticInfo.name}</Text>
         <Text style={styles.subtitle}>Welcome back to your goal</Text>
@@ -45,6 +58,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 24,
   },
+  arrowContainer: {},
 });
 
 export default Header;

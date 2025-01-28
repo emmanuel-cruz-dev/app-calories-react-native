@@ -3,10 +3,17 @@ import { View, Text, StyleSheet } from "react-native";
 import { Button, Icon } from "@rneui/themed";
 
 import Header from "../../components/Header";
+import { useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "../../types/index";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 const Home = () => {
+  const { navigate } =
+    useNavigation<StackNavigationProp<RootStackParamList, "Home">>();
+
   const handleAddCaloriesPress = () => {
     console.log("Add calories pressed");
+    navigate("AddFood");
   };
 
   return (

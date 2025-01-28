@@ -12,6 +12,7 @@
     "@expo/metro-runtime": "~4.0.1",
     "@react-navigation/native": "^7.0.14",
     "@react-navigation/native-stack": "^7.2.0",
+    "@react-navigation/stack": "^7.1.1",
     "@rneui/base": "^4.0.0-rc.7",
     "@rneui/themed": "^4.0.0-rc.8",
     "expo": "~52.0.27",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@types/react-navigation": "^3.0.8",
     "typescript": "^5.3.3"
   },
   "private": true
