@@ -4,12 +4,16 @@ import Header from "../../components/Header";
 
 const AddFood = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <Header />
+      <View></View>
+      <View></View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {},
+});
 
 export default AddFood;
