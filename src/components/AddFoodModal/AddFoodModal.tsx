@@ -1,5 +1,5 @@
 import { Button, Icon, Input } from "@rneui/themed";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Modal, View, Text, StyleSheet } from "react-native";
 
 type AddFoodModalProps = {
@@ -37,6 +37,12 @@ const AddFoodModal: FC<AddFoodModalProps> = ({ onClose, visible }) => {
     { id: 3, text: "Portion", value: portion, setter: setPortion },
   ];
 
+  useEffect(() => {
+    setCalories("");
+    setName("");
+    setPortion("");
+  }, [visible]);
+
   return (
     <Modal
       visible={visible}
@@ -68,7 +74,7 @@ const AddFoodModal: FC<AddFoodModalProps> = ({ onClose, visible }) => {
               icon={<Icon name="add" size={24} color={"#fff"} />}
               color={"#4ecb71"}
               radius={"lg"}
-              disabled={!calories || !name || !portion}
+              disabled={!calories.trim() || !name.trim() || !portion.trim()}
             />
           </View>
         </View>
