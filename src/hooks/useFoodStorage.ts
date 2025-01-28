@@ -19,7 +19,6 @@ const useFoodStorage = () => {
           MY_FOOD_KEY,
           JSON.stringify(currentSavedFoodParsed)
         );
-        console.log(currentSavedFoodParsed);
 
         return Promise.resolve();
       }

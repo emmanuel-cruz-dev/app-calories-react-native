@@ -9,10 +9,15 @@ const AddFood = () => {
   const [visible, setVisible] = useState<boolean>(false);
   const { onGetFood } = useFoodStorage();
 
-  const handleModalClose = (shouldUpdate?: boolean) => {
+  const handleModalClose = async (shouldUpdate?: boolean) => {
     if (shouldUpdate) {
       Alert.alert("Food added successfully");
-      // TODO: Actualizar la lista de alimentos
+      try {
+        const foodsReponse = await onGetFood();
+        console.log(foodsReponse);
+      } catch (error) {
+        console.error(error);
+      }
     }
     setVisible(false);
   };
