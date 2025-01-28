@@ -8,18 +8,19 @@ type AddFoodModalProps = {
 };
 
 type FormItemProps = {
-  text: string;
+  paragraph: string;
   value: string;
+  setter: (text: string) => void;
 };
 
-const FormItem: FC<FormItemProps> = ({ text, value }) => {
+const FormItem: FC<FormItemProps> = ({ paragraph, value, setter }) => {
   return (
     <View style={styles.formItem}>
       <View style={styles.inputContainer}>
-        <Input value={value} />
+        <Input value={value} onChangeText={(text: string) => setter(value)} />
       </View>
       <View style={styles.legendContainer}>
-        <Text style={styles.legend}>{text}</Text>
+        <Text style={styles.legend}>{paragraph}</Text>
       </View>
     </View>
   );
@@ -31,9 +32,9 @@ const AddFoodModal: FC<AddFoodModalProps> = ({ onClose, visible }) => {
   const [portion, setPortion] = useState<string>("");
 
   const staticInfo = [
-    { id: 1, text: "CAL", value: calories },
-    { id: 2, text: "Name", value: name },
-    { id: 3, text: "Portion", value: portion },
+    { id: 1, text: "CAL", value: calories, setter: setCalories },
+    { id: 2, text: "Name", value: name, setter: setName },
+    { id: 3, text: "Portion", value: portion, setter: setPortion },
   ];
 
   return (
@@ -54,7 +55,12 @@ const AddFoodModal: FC<AddFoodModalProps> = ({ onClose, visible }) => {
           </View>
 
           {staticInfo.map((item) => (
-            <FormItem text={item.text} value={item.value} key={item.id} />
+            <FormItem
+              paragraph={item.text}
+              value={item.value}
+              key={item.id}
+              setter={item.setter}
+            />
           ))}
           <View style={styles.buttonContainer}>
             <Button
