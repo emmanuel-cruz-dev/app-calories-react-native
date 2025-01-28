@@ -5,18 +5,24 @@ import { Button, Icon } from "@rneui/themed";
 import Header from "../../components/Header";
 
 const Home = () => {
+  const handleAddCaloriesPress = () => {
+    console.log("Add calories pressed");
+  };
+
   return (
     <View style={styles.container}>
       <Header />
       <View style={styles.caloriesContainer}>
         <View style={styles.leftContainer}>
-          <Text>Calories</Text>
+          <Text style={styles.caloriesLegend}>Calories</Text>
         </View>
         <View style={styles.rightContainer}>
           <Button
-            radius={"xl"}
+            radius={"lg"}
             type="solid"
             icon={<Icon name="add-circle-outline" color={"#fff"} />}
+            color={"#4ecb71"}
+            onPress={handleAddCaloriesPress}
           ></Button>
         </View>
       </View>
@@ -37,9 +43,15 @@ const styles = StyleSheet.create({
   },
   leftContainer: {
     flex: 1,
+    justifyContent: "center",
   },
   rightContainer: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "flex-end",
+  },
+  caloriesLegend: {
+    fontSize: 20,
   },
 });
 
