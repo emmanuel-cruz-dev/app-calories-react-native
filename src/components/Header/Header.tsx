@@ -17,7 +17,7 @@ const Header = () => {
         <View style={styles.arrowContainer}>
           <Button
             icon={<Icon name="arrow-back" size={24} />}
-            onPress={goBack}
+            onPress={() => goBack()}
             type="clear"
           />
         </View>
@@ -42,10 +42,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   rightContainer: {
-    justifyContent: "flex-end",
+    flex: 1,
+    alignItems: "flex-end",
+    justifyContent: "center",
   },
   name: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: "bold",
   },
   subtitle: {
