@@ -17,7 +17,7 @@ const FormItem: FC<FormItemProps> = ({ paragraph, value, setter }) => {
   return (
     <View style={styles.formItem}>
       <View style={styles.inputContainer}>
-        <Input value={value} onChangeText={(text: string) => setter(value)} />
+        <Input value={value} onChangeText={(text: string) => setter(text)} />
       </View>
       <View style={styles.legendContainer}>
         <Text style={styles.legend}>{paragraph}</Text>
@@ -68,6 +68,7 @@ const AddFoodModal: FC<AddFoodModalProps> = ({ onClose, visible }) => {
               icon={<Icon name="add" size={24} color={"#fff"} />}
               color={"#4ecb71"}
               radius={"lg"}
+              disabled={!calories || !name || !portion}
             />
           </View>
         </View>
