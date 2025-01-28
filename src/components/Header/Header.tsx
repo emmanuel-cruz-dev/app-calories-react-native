@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   rightContainer: {
-    flex: 1,
+    // flex: 1,
     justifyContent: "flex-end",
   },
   name: {
