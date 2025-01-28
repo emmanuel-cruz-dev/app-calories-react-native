@@ -43,6 +43,11 @@ const AddFoodModal: FC<AddFoodModalProps> = ({ onClose, visible }) => {
     setPortion("");
   }, [visible]);
 
+  const handleAddPress = () => {
+    console.log("Add food pressed");
+    onClose();
+  };
+
   return (
     <Modal
       visible={visible}
@@ -74,6 +79,7 @@ const AddFoodModal: FC<AddFoodModalProps> = ({ onClose, visible }) => {
               icon={<Icon name="add" size={24} color={"#fff"} />}
               color={"#4ecb71"}
               radius={"lg"}
+              onPress={handleAddPress}
               disabled={!calories.trim() || !name.trim() || !portion.trim()}
             />
           </View>
