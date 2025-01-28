@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text, Alert, ScrollView } from "react-native";
 import Header from "../../components/Header";
 import { Button, Icon, Input } from "@rneui/themed";
@@ -20,6 +20,10 @@ const AddFood = () => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    loadFoods().catch(null);
+  }, []);
 
   const handleModalClose = async (shouldUpdate?: boolean) => {
     if (shouldUpdate) {
