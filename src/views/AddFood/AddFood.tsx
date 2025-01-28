@@ -3,13 +3,16 @@ import { View, StyleSheet, Text, Alert } from "react-native";
 import Header from "../../components/Header";
 import { Button, Icon, Input } from "@rneui/themed";
 import AddFoodModal from "../../components/AddFoodModal";
+import useFoodStorage from "../../hooks/useFoodStorage";
 
 const AddFood = () => {
   const [visible, setVisible] = useState<boolean>(false);
+  const { onGetFood } = useFoodStorage();
 
   const handleModalClose = (shouldUpdate?: boolean) => {
     if (shouldUpdate) {
       Alert.alert("Food added successfully");
+      // TODO: Actualizar la lista de alimentos
     }
     setVisible(false);
   };
