@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, Alert } from "react-native";
+import { View, StyleSheet, Text, Alert, ScrollView } from "react-native";
 import Header from "../../components/Header";
 import { Button, Icon, Input } from "@rneui/themed";
 import AddFoodModal from "../../components/AddFoodModal";
 import useFoodStorage from "../../hooks/useFoodStorage";
 import { Meal } from "../../types";
+import MealItem from "../../components/MealItem";
 
 const AddFood = () => {
   const [visible, setVisible] = useState<boolean>(false);
@@ -55,6 +56,16 @@ const AddFood = () => {
           radius={"lg"}
         />
       </View>
+      <ScrollView style={styles.content}>
+        {foods?.map((meal) => (
+          <MealItem
+            key={meal.name}
+            calories={meal.calories}
+            name={meal.name}
+            portion={meal.portion}
+          />
+        ))}
+      </ScrollView>
       <AddFoodModal visible={visible} onClose={handleModalClose} />
     </View>
   );
@@ -92,6 +103,7 @@ const styles = StyleSheet.create({
     color: "#000",
     fontSize: 14,
   },
+  content: {},
 });
 
 export default AddFood;
