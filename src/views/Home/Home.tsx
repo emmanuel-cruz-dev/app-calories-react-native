@@ -12,7 +12,6 @@ const Home = () => {
     useNavigation<StackNavigationProp<RootStackParamList, "Home">>();
 
   const handleAddCaloriesPress = () => {
-    console.log("Add calories pressed");
     navigate("AddFood");
   };
 
@@ -26,11 +25,10 @@ const Home = () => {
         <View style={styles.rightContainer}>
           <Button
             radius={"lg"}
-            type="solid"
             icon={<Icon name="add-circle-outline" color={"#fff"} />}
             color={"#4ecb71"}
             onPress={handleAddCaloriesPress}
-          ></Button>
+          />
         </View>
       </View>
     </View>

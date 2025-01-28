@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import Header from "../../components/Header";
-import { Button, Icon } from "@rneui/base";
+import { Button, Icon } from "@rneui/themed";
 import { Input } from "@rneui/themed";
 
 const AddFood = () => {
@@ -17,7 +17,7 @@ const AddFood = () => {
             icon={<Icon name="add-circle-outline" color={"#fff"} />}
             radius={"lg"}
             color={"#4ecb71"}
-          ></Button>
+          />
         </View>
       </View>
       <View style={styles.searchContainer}>

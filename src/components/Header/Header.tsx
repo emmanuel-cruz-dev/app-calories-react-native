@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, StyleSheet, Image } from "react-native";
-import { Button, Icon } from "@rneui/base";
+import { Button, Icon } from "@rneui/themed";
 
 const staticInfo = {
   name: "Emmanuel Cruz",
