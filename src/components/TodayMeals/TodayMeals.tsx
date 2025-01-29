@@ -6,15 +6,21 @@ import MealItem from "../MealItem";
 
 type TodayMealsProps = {
   foods: Meal[];
+  onCompleteAddRemove?: () => void;
 };
 
-const TodayMeals: FC<TodayMealsProps> = ({ foods }) => {
+const TodayMeals: FC<TodayMealsProps> = ({ foods, onCompleteAddRemove }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Comidas</Text>
       <ScrollView style={styles.content}>
         {foods?.map((meal: Meal, index) => (
-          <MealItem key={`today-meal-item-${meal.name}-${index}`} {...meal} />
+          <MealItem
+            key={`today-meal-item-${meal.name}-${index}`}
+            {...meal}
+            onCompletedAddRemove={onCompleteAddRemove}
+            itemPosition={index}
+          />
         ))}
       </ScrollView>
     </View>

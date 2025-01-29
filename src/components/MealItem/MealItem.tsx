@@ -5,15 +5,21 @@ import { Meal } from "../../types";
 import { Button, Icon } from "@rneui/themed";
 import useFoodStorage from "../../hooks/useFoodStorage";
 
-type MealItemProps = Meal & { isAbleToAdd?: boolean };
+type MealItemProps = Meal & {
+  isAbleToAdd?: boolean;
+  onCompletedAddRemove?: () => void;
+  itemPosition?: number;
+};
 
 const MealItem: FC<MealItemProps> = ({
   calories,
   name,
   portion,
   isAbleToAdd,
+  itemPosition,
+  onCompletedAddRemove,
 }) => {
-  const { onSaveTodayFood } = useFoodStorage();
+  const { onSaveTodayFood, onDeleteTodayFood } = useFoodStorage();
 
   const handleIconPress = async () => {
     try {
@@ -21,7 +27,11 @@ const MealItem: FC<MealItemProps> = ({
         await onSaveTodayFood({ name, calories, portion });
         Alert.alert("Food added per day successfully");
       } else {
+        await onDeleteTodayFood(itemPosition ?? -1);
+        Alert.alert("Food removed per day successfully");
       }
+
+      onCompletedAddRemove?.();
     } catch (error) {
       console.error(error);
       Alert.alert("Error adding food per day");
