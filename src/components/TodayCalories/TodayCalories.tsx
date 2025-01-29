@@ -1,8 +1,18 @@
-import React from "react";
+import React, { FC } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
 
-const TodayCalories = ({ total, consumed, remaining }) => {
+type TodayCaloriesProps = {
+  total: number | string;
+  consumed: number | string;
+  remaining: number | string;
+};
+
+const TodayCalories: FC<TodayCaloriesProps> = ({
+  total = 0,
+  consumed = 0,
+  remaining = 0,
+}) => {
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
@@ -28,13 +38,33 @@ const TodayCalories = ({ total, consumed, remaining }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {},
-  leftContainer: {},
-  rightContainer: {},
-  rightItem: {},
-  today: {},
-  rightItemLegend: {},
-  rightItemValue: {},
+  container: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  leftContainer: {
+    flex: 1,
+  },
+  rightContainer: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  rightItem: {
+    flexDirection: "row",
+    marginBottom: 8,
+  },
+  today: {
+    fontSize: 20,
+    fontWeight: "500",
+    marginBottom: 14,
+  },
+  rightItemLegend: {
+    flex: 1,
+  },
+  rightItemValue: {
+    flex: 1,
+    textAlign: "right",
+  },
 });
 
 export default TodayCalories;
