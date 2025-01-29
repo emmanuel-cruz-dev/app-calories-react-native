@@ -68,10 +68,24 @@ const useFoodStorage = () => {
     }
   };
 
+  const handleGetTodayFood = async () => {
+    try {
+      const foods = await AsyncStorage.getItem(MY_TODAY_FOOD_KEY);
+
+      if (foods !== null) {
+        const parsedFoods = JSON.parse(foods);
+        return Promise.resolve(parsedFoods);
+      }
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
+
   return {
     onSaveFood: handleSaveFood,
     onGetFood: handleGetFood,
     onSaveTodayFood: handleSaveTodayFood,
+    onGetTodayFood: handleGetTodayFood,
   };
 };
 
