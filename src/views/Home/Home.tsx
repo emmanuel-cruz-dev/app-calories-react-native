@@ -14,7 +14,7 @@ const Home = () => {
   const { navigate } =
     useNavigation<StackNavigationProp<RootStackParamList, "Home">>();
 
-  const loadTodayFood = async () => {
+  const loadTodayFood = useCallback(async () => {
     try {
       const todayFoodReponse = await onGetTodayFood();
       setTodayFood(todayFoodReponse);
@@ -22,12 +22,12 @@ const Home = () => {
       setTodayFood([]);
       console.error(error);
     }
-  };
+  }, []);
 
   useFocusEffect(
     useCallback(() => {
       loadTodayFood().catch(null);
-    }, [])
+    }, [loadTodayFood])
   );
 
   const handleAddCaloriesPress = () => {
