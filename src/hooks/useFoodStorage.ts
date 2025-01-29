@@ -56,9 +56,15 @@ const useFoodStorage = () => {
 
   const handleSaveTodayFood = async ({ name, calories, portion }: Meal) => {
     try {
-      console.log("hola");
+      const result = await saveInfoToStorage(MY_TODAY_FOOD_KEY, {
+        name,
+        calories,
+        portion,
+        date: new Date().toISOString(),
+      });
+      return Promise.resolve(result);
     } catch (error) {
-      console.log(error);
+      return Promise.reject(error);
     }
   };
 
