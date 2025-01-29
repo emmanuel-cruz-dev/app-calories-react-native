@@ -7,6 +7,7 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { Meal, RootStackParamList } from "../../types/index";
 import { StackNavigationProp } from "@react-navigation/stack";
 import useFoodStorage from "../../hooks/useFoodStorage";
+import TodayCalories from "../../components/TodayCalories";
 
 const Home = () => {
   const [todayFood, setTodayFood] = useState<Meal[]>([]);
@@ -34,8 +35,6 @@ const Home = () => {
     navigate("AddFood");
   };
 
-  console.log(todayFood);
-
   return (
     <View style={styles.container}>
       <Header />
@@ -52,6 +51,7 @@ const Home = () => {
           />
         </View>
       </View>
+      <TodayCalories />
     </View>
   );
 };
