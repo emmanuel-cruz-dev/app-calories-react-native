@@ -37,7 +37,11 @@ const AddFood = () => {
   const handleSearchPress = async () => {
     try {
       const result = await onGetFood();
-      setFoods(result.filter((item: Meal) => item.name.includes(search)));
+      setFoods(
+        result.filter((item: Meal) =>
+          item.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+        )
+      );
     } catch (error) {
       console.error(error);
       setFoods([]);
