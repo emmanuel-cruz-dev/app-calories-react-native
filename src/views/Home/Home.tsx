@@ -16,7 +16,12 @@ const totalCaloriesPerDay = 2000;
 
 const Home = () => {
   const [todayFood, setTodayFood] = useState<Meal[]>([]);
-  const [todayStatistics, setTodayStatistics] = useState<TodayCaloriesProps>();
+  const [todayStatistics, setTodayStatistics] = useState<TodayCaloriesProps>({
+    total: totalCaloriesPerDay,
+    consumed: 0,
+    remaining: 0,
+    percentage: 0,
+  });
   const { onGetTodayFood } = useFoodStorage();
   const { navigate } =
     useNavigation<StackNavigationProp<RootStackParamList, "Home">>();
@@ -31,6 +36,7 @@ const Home = () => {
       const percentage = (caloriesConsumed / totalCaloriesPerDay) * 100;
 
       setTodayStatistics({
+        total: totalCaloriesPerDay,
         consumed: caloriesConsumed,
         remaining: remainingCalories,
         percentage,
