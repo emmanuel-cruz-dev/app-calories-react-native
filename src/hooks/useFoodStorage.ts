@@ -2,32 +2,40 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Meal } from "../types/index";
 
 const MY_FOOD_KEY = "@MyFood:Key";
+const MY_TODAY_FOOD_KEY = "@MyTodayFood:Key";
 
 const useFoodStorage = () => {
-  const handleSaveFood = async ({ name, calories, portion }: Meal) => {
+  const saveInfoToStorage = async (storageKey: string, meal: Meal) => {
     try {
-      const currentSavedFood = await AsyncStorage.getItem(MY_FOOD_KEY);
+      const currentSavedFood = await AsyncStorage.getItem(storageKey);
 
       if (currentSavedFood !== null) {
         const currentSavedFoodParsed = JSON.parse(currentSavedFood);
-        currentSavedFoodParsed.push({
-          name,
-          calories,
-          portion,
-        });
+        currentSavedFoodParsed.push(meal);
+
         await AsyncStorage.setItem(
-          MY_FOOD_KEY,
+          storageKey,
           JSON.stringify(currentSavedFoodParsed)
         );
 
         return Promise.resolve();
       }
 
-      await AsyncStorage.setItem(
-        MY_FOOD_KEY,
-        JSON.stringify([{ name, calories, portion }])
-      );
+      await AsyncStorage.setItem(storageKey, JSON.stringify([meal]));
       return Promise.resolve();
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
+
+  const handleSaveFood = async ({ name, calories, portion }: Meal) => {
+    try {
+      const result = await saveInfoToStorage(MY_FOOD_KEY, {
+        name,
+        calories,
+        portion,
+      });
+      return Promise.resolve(result);
     } catch (error) {
       return Promise.reject(error);
     }
@@ -46,13 +54,22 @@ const useFoodStorage = () => {
     }
   };
 
+  const handleSaveTodayFood = async ({ name, calories, portion }: Meal) => {
+    try {
+      console.log("hola");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return {
     onSaveFood: handleSaveFood,
     onGetFood: handleGetFood,
+    onSaveTodayFood: handleSaveTodayFood,
   };
 };
 
-// Guardar información de los alimentos
-// Método para obtener info de los alimentos
+// Guardar información de los alimentos del día de hoy
+// Método para obtener los alimentos del día de hoy
 
 export default useFoodStorage;
