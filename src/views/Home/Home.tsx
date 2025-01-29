@@ -24,7 +24,7 @@ const Home = () => {
   const calculateTodayStatistics = async (meals: Meal[]) => {
     try {
       const caloriesConsumed = meals.reduce(
-        (acum, curr) => acum + Number(curr.calories),
+        (accum, curr) => accum + Number(curr.calories),
         0
       );
       const remainingCalories = totalCaloriesPerDay - caloriesConsumed;

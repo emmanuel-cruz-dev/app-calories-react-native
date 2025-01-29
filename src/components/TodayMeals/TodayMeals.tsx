@@ -1,7 +1,6 @@
 import React, { FC } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { Meal } from "../../types";
-import { ScrollView } from "react-native-reanimated/lib/typescript/Animated";
 
 import MealItem from "../MealItem";
 
