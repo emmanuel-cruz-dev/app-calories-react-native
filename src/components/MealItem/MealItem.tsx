@@ -15,6 +15,7 @@ const MealItem: FC<Meal> = ({ calories, name, portion }) => {
         <Button
           icon={<Icon name="add-circle-outline" size={24} />}
           type="clear"
+          style={styles.iconButton}
         />
         <Text style={styles.calories}>{calories} cal</Text>
       </View>
@@ -50,6 +51,9 @@ const styles = StyleSheet.create({
   },
   calories: {
     fontSize: 18,
+  },
+  iconButton: {
+    marginBottom: -8,
   },
 });
 
